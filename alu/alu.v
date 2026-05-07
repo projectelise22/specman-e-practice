@@ -26,9 +26,31 @@ always @(posedge clk or negedge rst_n) begin
         done <= 1'b0;
     end
 end
- 
-// Clock generator (for EDA Playground only)
-// initial clk = 0;
-// always  #5 clk = ~clk;
- 
+endmodule
+
+module top;
+
+    logic clk;
+    logic rst_n;
+    logic [7:0] a;
+    logic [7:0] b;
+    logic [1:0] op;
+    logic valid;
+    logic [8:0] result;
+    logic done;
+
+    alu alu (
+        .clk(clk),
+        .rst_n(rst_n),
+        .a(a),
+        .b(b),
+        .op(op),
+        .valid(valid),
+        .result(result),
+        .done(done)
+    );
+
+    initial clk = 0;
+    always #5 clk = ~clk;
+
 endmodule

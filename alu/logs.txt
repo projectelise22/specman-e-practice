@@ -1,0 +1,217 @@
+[2026-05-07 19:58:18 UTC] xrun -Q -unbuffered '-timescale' '1ns/1ns' '-sysv' '-access' '+rw' design.sv testbench.e  
+TOOL:	xrun	25.03-s001: Started on May 07, 2026 at 15:58:19 EDT
+xrun: 25.03-s001: (c) Copyright 1995-2025 Cadence Design Systems, Inc.
+2026/05/07 15:58:21 WARNING (/xcelium25.03/tools.lnx86/bin/cdnsEnvCheck): This OS does not appear to be a Cadence supported Linux configuration. For more info, please run <cdsroot>/tools/bin/checkSysConf <productId>
+2026/05/07 15:58:21 WARNING (/xcelium25.03/tools.lnx86/bin/cdnsEnvCheck): This OS does not appear to be a Cadence supported Linux configuration. For more info, please run <cdsroot>/tools/bin/checkSysConf <productId>
+2026/05/07 15:58:21 WARNING (/xcelium25.03/tools.lnx86/bin/cdnsEnvCheck): This OS does not appear to be a Cadence supported Linux configuration. For more info, please run <cdsroot>/tools/bin/checkSysConf <productId>
+2026/05/07 15:58:22 WARNING (/xcelium25.03/tools.lnx86/bin/cdnsEnvCheck): This OS does not appear to be a Cadence supported Linux configuration. For more info, please run <cdsroot>/tools/bin/checkSysConf <productId>
+
+
+	Top level design units:
+		top
+Loading snapshot worklib.top:sv .................... Done
+Initializing Xcelium testbench (25.03 Build 426593)  -  Linked on Thu May  7
+15:58:24 2026
+
+Checking license ... OK
+Doing setup ...
+Generating the test with IntelliGen using seed 1...
+
+   *** Warning: DEPR_PORTS_UNIFICATION_DISABLED: 
+Performance optimization for external ports is disabled.
+Access through ports 'sys.env.evc.monitor.clk_p' and
+'sys.env.evc.driver.clk_p' is done separately although both access the same
+HDL path 'top.alu.clk'.
+Suggestion: use 'set config simulation -enable_ports_unification=TRUE'
+to improve the performance of external port access.
+
+To change the severity, type:
+set notify -severity=<new-severity-level> DEPR_PORTS_UNIFICATION_DISABLED
+To see possible severity levels use 'set notify -help'
+
+
+   *** Warning: DEPR_PORTS_UNIFICATION_DISABLED: 
+Performance optimization for external ports is disabled.
+Access through ports 'sys.env.evc.monitor.clk_p' and 'sys.env.evc.clk_p' is
+done separately although both access the same HDL path 'top.alu.clk'.
+Suggestion: use 'set config simulation -enable_ports_unification=TRUE'
+to improve the performance of external port access.
+
+To change the severity, type:
+set notify -severity=<new-severity-level> DEPR_PORTS_UNIFICATION_DISABLED
+To see possible severity levels use 'set notify -help'
+
+
+   *** Warning: DEPR_PORTS_UNIFICATION_DISABLED: 
+Performance optimization for external ports is disabled.
+Access through ports 'sys.env.evc.driver.clk_p' and 'sys.env.evc.clk_p' is
+done separately although both access the same HDL path 'top.alu.clk'.
+Suggestion: use 'set config simulation -enable_ports_unification=TRUE'
+to improve the performance of external port access.
+
+To change the severity, type:
+set notify -severity=<new-severity-level> DEPR_PORTS_UNIFICATION_DISABLED
+To see possible severity levels use 'set notify -help'
+
+
+
+   *** Warning: WARN_VERILOG_WIRE_UNDEFINED: 
+WARNING:
+Write access by external port 'sys.env.evc.driver.a_p' to Verilog net
+'top.alu.a' without explicit declaration of the 'verilog_wire()' attribute or
+'pli_access()' attribute.
+Note that writing to this port will have a deposit semantics and not a driver
+semantics.
+For more information, refer to the Specman documentation.
+Declared at line 46 in @testbench
+
+To change the severity, type:
+set notify -severity=<new-severity-level> WARN_VERILOG_WIRE_UNDEFINED
+To see possible severity levels use 'set notify -help'
+
+
+   *** Warning: WARN_VERILOG_WIRE_UNDEFINED: 
+WARNING:
+Write access by external port 'sys.env.evc.driver.b_p' to Verilog net
+'top.alu.b' without explicit declaration of the 'verilog_wire()' attribute or
+'pli_access()' attribute.
+Note that writing to this port will have a deposit semantics and not a driver
+semantics.
+For more information, refer to the Specman documentation.
+Declared at line 47 in @testbench
+
+To change the severity, type:
+set notify -severity=<new-severity-level> WARN_VERILOG_WIRE_UNDEFINED
+To see possible severity levels use 'set notify -help'
+
+
+   *** Warning: WARN_VERILOG_WIRE_UNDEFINED: 
+WARNING:
+Write access by external port 'sys.env.evc.driver.op_p' to Verilog net
+'top.alu.op' without explicit declaration of the 'verilog_wire()' attribute or
+'pli_access()' attribute.
+Note that writing to this port will have a deposit semantics and not a driver
+semantics.
+For more information, refer to the Specman documentation.
+Declared at line 48 in @testbench
+
+To change the severity, type:
+set notify -severity=<new-severity-level> WARN_VERILOG_WIRE_UNDEFINED
+To see possible severity levels use 'set notify -help'
+
+
+   *** Warning: WARN_VERILOG_WIRE_UNDEFINED: 
+WARNING:
+Write access by external port 'sys.env.evc.driver.rst_n_p' to Verilog net
+'top.alu.rst_n' without explicit declaration of the 'verilog_wire()' attribute
+or 'pli_access()' attribute.
+Note that writing to this port will have a deposit semantics and not a driver
+semantics.
+For more information, refer to the Specman documentation.
+Declared at line 45 in @testbench
+
+To change the severity, type:
+set notify -severity=<new-severity-level> WARN_VERILOG_WIRE_UNDEFINED
+To see possible severity levels use 'set notify -help'
+
+
+   *** Warning: WARN_VERILOG_WIRE_UNDEFINED: 
+WARNING:
+Write access by external port 'sys.env.evc.driver.valid_p' to Verilog net
+'top.alu.valid' without explicit declaration of the 'verilog_wire()' attribute
+or 'pli_access()' attribute.
+Note that writing to this port will have a deposit semantics and not a driver
+semantics.
+For more information, refer to the Specman documentation.
+Declared at line 49 in @testbench
+
+To change the severity, type:
+set notify -severity=<new-severity-level> WARN_VERILOG_WIRE_UNDEFINED
+To see possible severity levels use 'set notify -help'
+
+Starting the test ...
+Running the test ...
+Running should now be initiated from the simulator side
+xcelium> source /xcelium25.03/tools/xcelium/files/xmsimrc
+xcelium> run
+[95] alu_driver_u-@1: [DRV] op=OR_OP a=0x5c b=0xa7 exp=0x0ff
+[105] alu_monitor_u-@2: [MON] result=0x0ff
+[SCB] PASS | Exp:0x0ff Got:0x0ff
+[115] alu_driver_u-@1: [DRV] op=OR_OP a=0x16 b=0xfd exp=0x0ff
+[125] alu_monitor_u-@2: [MON] result=0x0ff
+[SCB] PASS | Exp:0x0ff Got:0x0ff
+[135] alu_driver_u-@1: [DRV] op=ADD a=0xcc b=0xda exp=0x1a6
+[145] alu_monitor_u-@2: [MON] result=0x1a6
+[SCB] PASS | Exp:0x1a6 Got:0x1a6
+[155] alu_driver_u-@1: [DRV] op=SUB a=0xdd b=0x7f exp=0x05e
+[165] alu_monitor_u-@2: [MON] result=0x05e
+[SCB] PASS | Exp:0x05e Got:0x05e
+[175] alu_driver_u-@1: [DRV] op=AND_OP a=0x94 b=0x5f exp=0x014
+[185] alu_monitor_u-@2: [MON] result=0x014
+[SCB] PASS | Exp:0x014 Got:0x014
+[195] alu_driver_u-@1: [DRV] op=SUB a=0x1c b=0xc9 exp=0x153
+[205] alu_monitor_u-@2: [MON] result=0x153
+[SCB] PASS | Exp:0x153 Got:0x153
+[215] alu_driver_u-@1: [DRV] op=ADD a=0xf7 b=0xa0 exp=0x197
+[225] alu_monitor_u-@2: [MON] result=0x197
+[SCB] PASS | Exp:0x197 Got:0x197
+[235] alu_driver_u-@1: [DRV] op=SUB a=0x89 b=0xe4 exp=0x1a5
+[245] alu_monitor_u-@2: [MON] result=0x1a5
+[SCB] PASS | Exp:0x1a5 Got:0x1a5
+[255] alu_driver_u-@1: [DRV] op=SUB a=0xe7 b=0xa6 exp=0x041
+[265] alu_monitor_u-@2: [MON] result=0x041
+[SCB] PASS | Exp:0x041 Got:0x041
+[275] alu_driver_u-@1: [DRV] op=OR_OP a=0x68 b=0x87 exp=0x0ef
+[285] alu_monitor_u-@2: [MON] result=0x0ef
+[SCB] PASS | Exp:0x0ef Got:0x0ef
+[295] alu_driver_u-@1: [DRV] op=SUB a=0x48 b=0x52 exp=0x1f6
+[305] alu_monitor_u-@2: [MON] result=0x1f6
+[SCB] PASS | Exp:0x1f6 Got:0x1f6
+[315] alu_driver_u-@1: [DRV] op=ADD a=0xd4 b=0xa6 exp=0x17a
+[325] alu_monitor_u-@2: [MON] result=0x17a
+[SCB] PASS | Exp:0x17a Got:0x17a
+[335] alu_driver_u-@1: [DRV] op=SUB a=0x43 b=0xf3 exp=0x150
+[345] alu_monitor_u-@2: [MON] result=0x150
+[SCB] PASS | Exp:0x150 Got:0x150
+[355] alu_driver_u-@1: [DRV] op=AND_OP a=0x39 b=0xfa exp=0x038
+[365] alu_monitor_u-@2: [MON] result=0x038
+[SCB] PASS | Exp:0x038 Got:0x038
+[375] alu_driver_u-@1: [DRV] op=SUB a=0x30 b=0x7c exp=0x1b4
+[385] alu_monitor_u-@2: [MON] result=0x1b4
+[SCB] PASS | Exp:0x1b4 Got:0x1b4
+[395] alu_driver_u-@1: [DRV] op=ADD a=0x71 b=0x5d exp=0x0ce
+[405] alu_monitor_u-@2: [MON] result=0x0ce
+[SCB] PASS | Exp:0x0ce Got:0x0ce
+[415] alu_driver_u-@1: [DRV] op=AND_OP a=0xca b=0xb5 exp=0x080
+[425] alu_monitor_u-@2: [MON] result=0x080
+[SCB] PASS | Exp:0x080 Got:0x080
+[435] alu_driver_u-@1: [DRV] op=ADD a=0x81 b=0xa8 exp=0x129
+[445] alu_monitor_u-@2: [MON] result=0x129
+[SCB] PASS | Exp:0x129 Got:0x129
+[455] alu_driver_u-@1: [DRV] op=AND_OP a=0x6a b=0xba exp=0x02a
+[465] alu_monitor_u-@2: [MON] result=0x02a
+[SCB] PASS | Exp:0x02a Got:0x02a
+[475] alu_driver_u-@1: [DRV] op=SUB a=0x5b b=0xc1 exp=0x19a
+[485] alu_monitor_u-@2: [MON] result=0x19a
+[SCB] PASS | Exp:0x19a Got:0x19a
+[495] alu_driver_u-@1: [DRV] op=ADD a=0xff b=0xff exp=0x1fe
+[505] alu_monitor_u-@2: [MON] result=0x1fe
+[SCB] PASS | Exp:0x1fe Got:0x1fe
+[515] alu_driver_u-@1: [DRV] op=SUB a=0xe9 b=0xe9 exp=0x000
+[525] alu_monitor_u-@2: [MON] result=0x000
+[SCB] PASS | Exp:0x000 Got:0x000
+[535] alu_driver_u-@1: [DRV] op=AND_OP a=0xd8 b=0x00 exp=0x000
+[545] alu_monitor_u-@2: [MON] result=0x000
+[SCB] PASS | Exp:0x000 Got:0x000
+[555] alu_driver_u-@1: [DRV] op=OR_OP a=0x60 b=0xff exp=0x0ff
+Calling stop_run() from at line 319 in @testbench.
+Last specman tick - stop_run() was called
+[555] alu_env_u-@3: --- Test Complete ---
+Normal stop - stop_run() is completed
+Checking the test ...
+Checking is complete - 0 DUT errors, 0 DUT warnings.
+Wrote 1 cover_struct to ./cov_work/scope/testbench_sn1/sn.ucd
+Memory Usage - Current physical: 189.1M, Current virtual: 264.5M, Peak physical: 189.1M
+CPU Usage - 0.2s system + 1.3s user = 1.5s total (62.2% cpu)
+Simulation stopped via $stop(2) at time 555 NS + 2
+xcelium> TOOL:	xrun	25.03-s001: Exiting on May 07, 2026 at 15:58:39 EDT  (total: 00:00:20)

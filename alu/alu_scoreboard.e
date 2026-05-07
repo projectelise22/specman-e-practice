@@ -1,46 +1,47 @@
 <'
-
 -- ================================================= --
---   alu_scoreboard.e : Scoreboard for TB
+--   alu_scoreboard.e
+--   PURPOSE: Compares DUT output to expected.
+--            Uses local event alias to satisfy e's
+--            const-path requirement for 'on' and 'cover'.
 -- ================================================= --
-
 unit alu_scoreboard_u {
+    monitor     : alu_monitor_u;    -- reference, not instance
+    !expected_q : list of alu_packet_s;   -- FIFO queue of expected results
 
-  -- reference to monitor
-  monitor: alu_monitor_u;
-  
-  -- expected results queue
-  !expected_q: list of alu_packet_s;
-  
-  -- method for creating expected results
-  -- called before driving stimulus to DUT
-  push_expected(pkt: alu_packet_s) is {
-    expected_q.add(pkt);
-  };
-  
-  -- TCM: run in a loop, check every result
-  run() @monitor.clk_p$ is {
-    while TRUE {
-      -- block until monitor sees a result
-      wait @monitor.result_ready;
+    -- Local event alias: required because 'monitor' is an injected
+    -- reference (non-const path). e's 'on' clause needs a const path.
+    -- This aliases monitor.result_ready through a locally-owned event.
+    event result_ready is @monitor.result_ready;
 
-      var actual: uint (bits: 9) = monitor.last_result;
-
-      if expected_q.size() == 0 {
-        dut_error("[SCB] Received result but expected queue is empty!");
-      } else {
-        var exp : alu_packet_s = expected_q.pop();
-
-        if actual != exp.expected_result {
-          dut_error("[SCB]", "TEST FAILED | Expected: 0x%0x | Actual: 0x%0x", exp.expected_result, actual);
-        } else {
-          out("[SCB]", "TEST PASS | Expected: 0x%0x | Actual: 0x%0x", exp.expected_result, actual);
-        };
-      };  
+    push_expected(pkt: alu_packet_s) is {
+        expected_q.add(pkt);   -- called by sequence BEFORE driving
     };
-  };
-  
 
-}; -- alu_scoreboard_u
+    -- check_results: runs forever, checks each result as it arrives
+    -- Named check_results (not run) to avoid TCM redeclaration conflict
+    check_results() @monitor.clk_rise is {
+        while TRUE {
+            wait @result_ready;
+            var actual : uint (bits:9) = monitor.last_result;
+            if expected_q.size() == 0 {
+                dut_error("[SCB] Result received but queue is empty!");
+            } else {
+                var exp : alu_packet_s = expected_q.pop0();   -- pop front (FIFO)
+                if actual != exp.expected_result {
+                    dut_error(appendf("[SCB] FAIL | Exp:0x%03x Got:0x%03x",
+                                      exp.expected_result, actual));
+                } else {
+                    out(appendf("[SCB] PASS | Exp:0x%03x Got:0x%03x",
+                                exp.expected_result, actual));
+                };
+            };
+        };
+    };
 
+    -- Auto-start check_results — same pattern as monitor_output
+    run() is also {
+        start check_results();
+    };
+};
 '>
