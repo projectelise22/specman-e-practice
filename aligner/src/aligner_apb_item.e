@@ -1,6 +1,7 @@
+================================================================
 File: aligner_apb_item.e
 Description: transaction struct for APB items
-
+================================================================
 <'
 struct apb_item like any_sequence_item {
     -- transaction signals

@@ -1,9 +1,12 @@
+================================================================
 File: aligner/src/aligner_apb_agent.e
 Description: This file implements the APB agent of the aligner tb
-
+================================================================
 <'
 import aligner_apb_item.e;
 import aligner_apb_driver.e;
+import aligner_apb_collector.e;
+import aligner_apb_monitor.e;
 
 unit aligner_apb_agent {
 
@@ -35,10 +38,22 @@ unit aligner_apb_agent {
         emit seq_drv.clock;
     };
 
-    
-    ------------------------
-    -- Monitor
-    ------------------------
+    ------------------------------------
+    -- Collector/Monitor/Scoreboard unit
+    ------------------------------------
+    -- Declare collector, monitor, and scoreboard units
+    apb_col : aligner_apb_collector is instance;
+    apb_mon : aligner_apb_monitor is instance;
+
+    -- Connect e ports
+    connect_pointers() is also{
+        apb_col.smp = smp;
+    };
+
+    -- Connect tlm ports
+    connect_ports() is also {
+        apb_col.col2mon_o.connect(apb_mon.col2mon_i);
+    };
 
     ------------------------
     -- Coverage

@@ -1,7 +1,12 @@
 File: aligner_env.e
 Description: Aligner environment unit
 
+================================================================
+File: aligner_env.e
+Description: Environment unit for Aligner
+================================================================
 <'
+
 import aligner_smp.e;
 import aligner_apb_agent.e;
 
@@ -17,9 +22,10 @@ unit aligner_env like any_env {
     	apb_agt.smp = smp;
     };
 
-    -- Start dv units
+    -- Start driver and monitor tcms
     run() is also {
         start apb_agt.apb_drv.drive();
+        start apb_agt.apb_col.write_to_mon();
     };
 
 };

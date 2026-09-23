@@ -1,3 +1,4 @@
+================================================================
 File: aligner_apb_driver.e
 Description: Contains the following
              - base sequence with item, created_kind, created_driver
@@ -6,6 +7,7 @@ Description: Contains the following
                 - drive method
             - extension of MAIN sequence to create sequence for APB
                 - write -> read -> compare
+================================================================
 <'
 -- APB Base Sequence
 sequence apb_base_seq using
@@ -20,19 +22,21 @@ unit apb_driver {
     !tr      : apb_item;
 
     -- reset method
-    reset() is {
+    reset() @drv_smp.rise_clk is {
         drv_smp.reset_n$ = 0;
         drv_smp.paddr$   = 0x0;
         drv_smp.psel$    = 0;
         drv_smp.penable$ = 0;
         drv_smp.pwrite$  = 0;
         drv_smp.pwdata$  = 0x0;
+        wait [5] * cycle;
+        drv_smp.reset_n$ = 1;
+        wait [20] * cycle;
     };
 
     -- drive to DUT
     drive() @drv_smp.rise_clk is {
         reset();
-        wait [2] * cycle;
 
         while (TRUE) {
             tr = seq_drv.get_next_item();
@@ -54,6 +58,7 @@ unit apb_driver {
             drv_smp.penable$ = 1;
 
             wait true(drv_smp.pready$ == 1);
+            message(LOW, "[DRV] Done sending new transaction");
 
             drv_smp.psel$    = 0;
             drv_smp.penable$ = 0;
